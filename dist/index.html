@@ -4,14 +4,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple News App</title>
+    <title>News App</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.article {
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+.article img {
+  max-width: 100%;
+  height: auto;
+}
+
+.article a {
+  color: #333;
+  text-decoration: none;
+}
+
+.article a:hover {
+  text-decoration: underline;
+}
+</style>
 </head>
 
 <body>
-    <h1>Top Headlines</h1>
-    <div id="news"></div>
-    <script src="/index.8cfc62b9.js" defer=""></script>
-
-</body>
+        <div class="container mt-5">
+            <h1 class="mb-4">Top News Headlines</h1>
+            <label for="category">Choose a category:</label>
+            <select id="category" name="category">
+                <option value="general">General</option>
+                <option value="business">Business</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="health">Health</option>
+                <option value="science">Science</option>
+                <option value="sports">Sports</option>
+                <option value="technology">Technology</option>
+            </select>
+        </div>
+        <script src="/index.672d4772.js"></script>
+    <script src="/NEWS-APP.3464ddca.js"></script></body>
 
 </html>
