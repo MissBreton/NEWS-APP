@@ -13,6 +13,10 @@
             padding: 0;
         }
 
+        #loading {
+            display: none;
+        }
+
         .article {
             border: 1px solid #ddd;
             padding: 15px;
@@ -36,20 +40,23 @@
 </head>
 
 <body>
-        <div class="container mt-5">
-            <h1 class="mb-4">Top News Headlines</h1>
-            <label for="category">Choose a category:</label>
-            <select id="category" name="category">
-                <option value="general">General</option>
-                <option value="business">Business</option>
-                <option value="entertainment">Entertainment</option>
-                <option value="health">Health</option>
-                <option value="science">Science</option>
-                <option value="sports">Sports</option>
-                <option value="technology">Technology</option>
-            </select>
-        </div>
-        <script src="script.js"></script>
-    </body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Top News Headlines</h1>
+        <label for="category">Choose a category:</label>
+        <select id="category" name="category">
+            <div id="loading">Loading...</div>
+            <option value="business">Business</option>
+            <option value="entertainment">Entertainment</option>
+        </select>
+        <div id="loading">Loading...</div>
+        <div id="news" class="row"></div>
+        <option value="health">Health</option>
+        <option value="science">Science</option>
+        <option value="sports">Sports</option>
+        <option value="technology">Technology</option>
+        </select>
+    </div>
+    <script src="script.js"></script>
+</body>
 
 </html>

@@ -1,9 +1,10 @@
 const apiKey = 'f113ee27fa254441849b3c3ab38cc760'; // Replace with your actual API key
 let country = "us";
 let category = "general";
-let url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}`;
+let url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=${apiKey}`;
 
 async function fetchNews() {
+    document.getElementById('loading').style.display = 'block';
     try {
         const response = await fetch(url, {
             headers: {
@@ -15,6 +16,8 @@ async function fetchNews() {
         displayNews(data.articles);
     } catch (error) {
         console.error('There was an error!', error);
+    } finally {
+        document.getElementById('loading').style.display = 'none';
     }
 }
 
@@ -29,33 +32,26 @@ function displayNews(articles) {
         const card = document.createElement('div');
         card.className = 'article card h-100'; // Bootstrap card classes
 
-        // Create and append a headline to the articleDiv
-        const title = document.createElement('h4');
-        title.textContent = article.title;
+        const cardBody = document.createElement('div');
+        cardBody.className = 'card-body';
+
+        const title = document.createElement('h5');
         title.className = 'card-title';
-        card.appendChild(title);
+        title.textContent = article.title;
 
-        // Create and append a description to the articleDiv
         const description = document.createElement('p');
-        description.textContent = article.description;
         description.className = 'card-text';
-        card.appendChild(description);
+        description.textContent = article.description;
 
-        // Create and append an image to the articleDiv
-        if (article.urlToImage) {
-            const img = document.createElement('img');
-            img.src = article.urlToImage;
-            img.alt = article.title;
-            img.className = 'card-img-top';
-            card.appendChild(img);
-        }
-
-        // Create and append a link to the full article
         const link = document.createElement('a');
-        link.href = article.url;
         link.textContent = 'Read more';
         link.target = '_blank';
         link.className = 'btn btn-primary';
+        link.href = article.url;
+
+        cardBody.appendChild(title);
+        cardBody.appendChild(description);
+        card.appendChild(cardBody);
         card.appendChild(link);
 
         articleDiv.appendChild(card);
@@ -70,3 +66,4 @@ function changeCategory() {
 }
 
 fetchNews();
+document.getElementById('category').addEventListener('change', changeCategory);
